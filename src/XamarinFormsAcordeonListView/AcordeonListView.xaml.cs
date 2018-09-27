@@ -6,12 +6,12 @@ using Xamarin.Forms;
 namespace XamarinFormsAcordeonListView
 {
     public partial class AcordeonListView : ContentPage
-	{
-		public AcordeonListView ()
-		{
-			InitializeComponent ();
+    {
+        public AcordeonListView()
+        {
+            InitializeComponent();
 
-            CustomersGroup.KeySelector = (Customer) => Customer;
+            Customers.DataSource.GroupDescriptors.Add(new GroupDescriptor(null, customer => customer));
         }
     }
 
@@ -19,7 +19,7 @@ namespace XamarinFormsAcordeonListView
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool boolValue && boolValue == true)              
+            if (value is bool boolValue && boolValue == true)
                 return "▲";
 
             return "▼";

@@ -12,7 +12,7 @@
                 new Customer{ Name= "Mary" , LastName = "Sangtarash" , CustomerNumber = 2 , PhoneNumber = 55781266, Address = "Tehran, 42Street,2Allay,Number2 "},
                 new Customer{ Name= "Nima" , LastName = "Hakim" , CustomerNumber = 3 , PhoneNumber = 55221146, Address = "Tehran, 84Street,6Allay,Number3 "},
                 new Customer{ Name= "Roya" , LastName = "Moheb" , CustomerNumber = 4 , PhoneNumber = 45612352, Address = "Tehran, 84Street,6Allay,Number5 "},
-                new Customer{ Name= "Neda" , LastName = "Davodi" , CustomerNumber = 5 , PhoneNumber = 52525365, Address = "Tehran, 94Street,8Allay,Number3 "},
+                new Customer{ Name= "Master" , LastName = "Template!" , CustomerNumber = 5 , PhoneNumber = 52525365, Address = "Detail Template!"},
             };
         }
     }

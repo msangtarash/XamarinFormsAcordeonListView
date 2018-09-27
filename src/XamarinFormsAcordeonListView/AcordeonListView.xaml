@@ -11,11 +11,9 @@
     <ContentPage.Resources>
         <app:ExapantionIndicatorConverter x:Key="ExapantionIndicatorConverter" />
     </ContentPage.Resources>
-    <view:SfListView
+    <view:SfListView x:Name="Customers"
                     AllowGroupExpandCollapse="True"
                     AutoFitMode="Height"
-                    IsStickyFooter="True"
-                    IsStickyHeader="True"
                     ItemsSource="{Binding Customers}"
                     SelectionMode="None"
                     Margin="0,20,0,0">
@@ -52,7 +50,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Phone Num:"  TextColor="White" FontSize="12"/>
-                                <Span Text="{Binding PhoneNumber , StringFormat='  {0}'}"  TextColor="Gray"/>
+                                <Span Text="{Binding PhoneNumber , StringFormat='  {0}'}"  TextColor="LightGray"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -60,7 +58,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Address:" TextColor="White" FontSize="12"/>
-                                <Span Text="{Binding Address , StringFormat='  {0}'}" TextColor="Gray"/>
+                                <Span Text="{Binding Address , StringFormat='  {0}'}" TextColor="LightGray"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -68,11 +66,7 @@
             </DataTemplate>
         </view:SfListView.ItemTemplate>
         <view:SfListView.DataSource>
-            <sfDataSource:DataSource AutoExpandGroups="False">
-                <sfDataSource:DataSource.GroupDescriptors>
-                    <sfDataSource:GroupDescriptor x:Name="CustomersGroup" />
-                </sfDataSource:DataSource.GroupDescriptors>
-            </sfDataSource:DataSource>
+            <sfDataSource:DataSource AutoExpandGroups="False" />
         </view:SfListView.DataSource>
     </view:SfListView>
 </ContentPage>
