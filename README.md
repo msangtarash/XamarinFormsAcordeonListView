@@ -10,3 +10,5 @@ How does it work?
 2- Use ItemTemplate as acordeon's detail template and its GroupHeaderTemplate as master item header of acordeon.
 
 3- Use [ExapantionIndicatorConverter](https://github.com/msangtarash/XamarinFormsAcordeonListView/blob/master/src/XamarinFormsAcordeonListView/AcordeonListView.xaml.cs#L18) to manage ▲ ▼ indicators.
+
+![](AcordeonListView.gif)
