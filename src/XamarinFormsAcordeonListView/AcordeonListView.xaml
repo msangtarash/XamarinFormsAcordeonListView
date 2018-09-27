@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:view="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:sfDataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             xmlns:app="clr-namespace:XamarinFormsAcordeonListView"
+             x:Class="XamarinFormsAcordeonListView.AcordeonListView" x:DataType="app:AcordeonListViewViewModel">
+    <ContentPage.BindingContext>
+        <app:AcordeonListViewViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <app:ExapantionIndicatorConverter x:Key="ExapantionIndicatorConverter" />
+    </ContentPage.Resources>
+    <view:SfListView
+                    AllowGroupExpandCollapse="True"
+                    AutoFitMode="Height"
+                    IsStickyFooter="True"
+                    IsStickyHeader="True"
+                    ItemsSource="{Binding Customers}"
+                    SelectionMode="None"
+                    Margin="0,20,0,0">
+        <view:SfListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <StackLayout x:DataType="{x:Null}" BackgroundColor="#e4654c">
+                    <StackLayout Orientation="Horizontal" Padding="10" >
+                        <Label Text="{Binding Key.CustomerNumber, StringFormat='{0}. '}" TextColor="White"/>
+                        <Label HorizontalOptions="StartAndExpand" TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Key.Name}"/>
+                                    <Span Text="{Binding Key.LastName , StringFormat='  {0}'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label HorizontalOptions="End" Text="{Binding IsExpand, Converter={StaticResource ExapantionIndicatorConverter}}" TextColor="#494041" />
+                    </StackLayout>
+                    <BoxView HeightRequest="1" BackgroundColor="LightGray" WidthRequest="50" Margin="0">
+                        <BoxView.Triggers>
+                            <DataTrigger Binding="{Binding IsExpand}" Value="True" TargetType="BoxView">
+                                <Setter Property="IsVisible" Value="False"/>
+                            </DataTrigger>
+                        </BoxView.Triggers>
+                    </BoxView>
+                </StackLayout>
+            </DataTemplate>
+        </view:SfListView.GroupHeaderTemplate>
+        <view:SfListView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout x:DataType="app:Customer" BackgroundColor="#494041"  Spacing="0" Padding="10,0,10,10">
+                    <Label Text="▼" TextColor="#e4654c" Margin="5,0" VerticalTextAlignment="End" HeightRequest="11"/>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Phone Num:"  TextColor="White" FontSize="12"/>
+                                <Span Text="{Binding PhoneNumber , StringFormat='  {0}'}"  TextColor="Gray"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Address:" TextColor="White" FontSize="12"/>
+                                <Span Text="{Binding Address , StringFormat='  {0}'}" TextColor="Gray"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </DataTemplate>
+        </view:SfListView.ItemTemplate>
+        <view:SfListView.DataSource>
+            <sfDataSource:DataSource AutoExpandGroups="False">
+                <sfDataSource:DataSource.GroupDescriptors>
+                    <sfDataSource:GroupDescriptor x:Name="CustomersGroup" />
+                </sfDataSource:DataSource.GroupDescriptors>
+            </sfDataSource:DataSource>
+        </view:SfListView.DataSource>
+    </view:SfListView>
+</ContentPage>
